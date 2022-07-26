@@ -11,4 +11,10 @@ class WeatherDataProviderTest
     {
         // @TODO
     }
+
+    @Test
+    public void executeWillReturnWeatherObject()
+    {
+        // @TODO
+    }
 }

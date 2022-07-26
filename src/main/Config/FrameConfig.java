@@ -1,4 +1,4 @@
-package Config;
+package main.Config;
 
 public class FrameConfig
 {

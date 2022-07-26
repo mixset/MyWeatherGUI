@@ -1,4 +1,4 @@
-package Builder;
+package main.Builder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,13 +11,12 @@ public class RequestUrlBuilder
 
     public URI build(String city) throws URISyntaxException
     {
-        StringBuilder uri = new StringBuilder(domain);
-        uri.append(String.format("v%d", API_VERSION));
-        uri.append("/current.json");
-        uri.append(String.format("?key=%s", API_KEY));
-        uri.append("&api=no");
-        uri.append(String.format("&q=%s", city));
+        String uri = domain + String.format("v%d", API_VERSION) +
+            "/current.json" +
+            String.format("?key=%s", API_KEY) +
+            "&api=no" +
+            String.format("&q=%s", city);
 
-        return new URI(uri.toString());
+        return new URI(uri);
     }
 }

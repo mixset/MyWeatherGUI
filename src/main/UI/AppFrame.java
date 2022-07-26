@@ -1,7 +1,7 @@
-package UI;
+package main.UI;
 
-import Config.FrameConfig;
-import UI.Listener.ActionPerformedListener;
+import main.Config.FrameConfig;
+import main.UI.Listener.ActionPerformedListener;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package DTO;
+package main.DTO;
 
 public class Location
 {

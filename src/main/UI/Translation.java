@@ -1,4 +1,4 @@
-package UI;
+package main.UI;
 
 public class Translation
 {

@@ -1,8 +1,8 @@
-package Http;
+package main.Http;
 
-import Builder.RequestUrlBuilder;
-import DTO.*;
-import Exception.WeatherNotFoundException;
+import main.Builder.RequestUrlBuilder;
+import main.DTO.*;
+import main.Exception.WeatherNotFoundException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

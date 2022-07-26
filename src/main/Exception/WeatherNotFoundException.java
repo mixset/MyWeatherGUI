@@ -1,4 +1,4 @@
-package Exception;
+package main.Exception;
 
 public class WeatherNotFoundException extends Throwable
 {

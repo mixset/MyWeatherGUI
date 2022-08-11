@@ -18,12 +18,23 @@ import java.util.Objects;
 
 public class WeatherDataProvider
 {
-    private static final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_1_1)
-            .connectTimeout(Duration.ofSeconds(10))
-            .build();
+    private final HttpClient httpClient;
+    private final RequestUrlBuilder requestUrlBuilder;
 
-    private final RequestUrlBuilder requestUrlBuilder = new RequestUrlBuilder();
+    public WeatherDataProvider()
+    {
+        this.requestUrlBuilder = new RequestUrlBuilder();
+        this.httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_1_1)
+                .connectTimeout(Duration.ofSeconds(10))
+                .build();
+    }
+
+    public WeatherDataProvider(HttpClient httpClient, RequestUrlBuilder requestUrlBuilder)
+    {
+        this.httpClient = httpClient;
+        this.requestUrlBuilder = requestUrlBuilder;
+    }
 
     public Weather execute(Request request) throws IOException, InterruptedException, ParseException, URISyntaxException, WeatherNotFoundException
     {

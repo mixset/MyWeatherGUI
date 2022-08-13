@@ -1,4 +1,4 @@
-package main.DTO;
+package MyWeatherGUI.DTO;
 
 public class Location
 {

@@ -1,8 +1,8 @@
-package main.Http;
+package MyWeatherGUI.Http;
 
-import main.Builder.RequestUrlBuilder;
-import main.DTO.*;
-import main.Exception.WeatherNotFoundException;
+import MyWeatherGUI.Builder.RequestUrlBuilder;
+import MyWeatherGUI.DTO.*;
+import MyWeatherGUI.Exception.WeatherNotFoundException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

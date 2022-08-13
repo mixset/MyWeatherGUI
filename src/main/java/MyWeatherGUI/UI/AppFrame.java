@@ -1,7 +1,7 @@
-package main.UI;
+package MyWeatherGUI.UI;
 
-import main.Config.FrameConfig;
-import main.UI.Listener.ActionPerformedListener;
+import MyWeatherGUI.Config.FrameConfig;
+import MyWeatherGUI.UI.Listener.ActionPerformedListener;
 
 import javax.swing.*;
 import java.awt.*;

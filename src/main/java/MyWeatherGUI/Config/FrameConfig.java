@@ -1,4 +1,4 @@
-package main.Config;
+package MyWeatherGUI.Config;
 
 public class FrameConfig
 {

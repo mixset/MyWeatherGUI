@@ -1,16 +1,16 @@
-package tests.Http;
+package MyWeatherGUI.Http;
 
-import main.Builder.RequestUrlBuilder;
-import main.DTO.Request;
-import main.DTO.Weather;
-import main.Exception.WeatherNotFoundException;
-import main.Http.WeatherDataProvider;
+import MyWeatherGUI.DTO.Request;
+import MyWeatherGUI.Exception.WeatherNotFoundException;
+import MyWeatherGUI.Builder.RequestUrlBuilder;
+import MyWeatherGUI.DTO.Weather;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.net.ssl.SSLSession;
@@ -22,9 +22,6 @@ import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
-
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class WeatherDataProviderTest
@@ -83,12 +80,10 @@ class WeatherDataProviderTest
             }
         };
 
-        when(requestUrlBuilder.build("Example")).thenReturn(new URI("http://example.com/some/url/Example"));
-        when(httpClient.send(any(), any())).thenReturn(response);
+        Mockito.when(requestUrlBuilder.build("Example")).thenReturn(new URI("http://example.com/some/url/Example"));
+        Mockito.when(httpClient.send(Mockito.any(), Mockito.any())).thenReturn(response);
 
-        Assertions.assertThrows(WeatherNotFoundException.class, () -> {
-            weatherDataProvider.execute(new Request("Example"));
-        });
+        Assertions.assertThrows(WeatherNotFoundException.class, () -> weatherDataProvider.execute(new Request("Example")));
     }
 
     @Test
@@ -135,8 +130,8 @@ class WeatherDataProviderTest
             }
         };
 
-        when(requestUrlBuilder.build("Example")).thenReturn(new URI("http://example.com/some/url/Example"));
-        when(httpClient.send(any(), any())).thenReturn(response);
+        Mockito.when(requestUrlBuilder.build("Example")).thenReturn(new URI("http://example.com/some/url/Example"));
+        Mockito.when(httpClient.send(Mockito.any(), Mockito.any())).thenReturn(response);
 
         Assertions.assertInstanceOf(
             Weather.class,

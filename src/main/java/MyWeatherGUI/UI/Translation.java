@@ -1,4 +1,4 @@
-package main.UI;
+package MyWeatherGUI.UI;
 
 public class Translation
 {

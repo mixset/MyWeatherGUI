@@ -1,9 +1,9 @@
-package main.UI.Listener;
+package MyWeatherGUI.UI.Listener;
 
-import main.DTO.Request;
-import main.DTO.Weather;
-import main.Http.WeatherDataProvider;
-import main.UI.Translation;
+import MyWeatherGUI.DTO.Request;
+import MyWeatherGUI.DTO.Weather;
+import MyWeatherGUI.Http.WeatherDataProvider;
+import MyWeatherGUI.UI.Translation;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import main.Exception.WeatherNotFoundException;
+import MyWeatherGUI.Exception.WeatherNotFoundException;
 
 public class ActionPerformedListener implements ActionListener
 {

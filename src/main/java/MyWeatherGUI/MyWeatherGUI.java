@@ -1,6 +1,6 @@
-package main;
+package MyWeatherGUI;
 
-import main.UI.AppFrame;
+import MyWeatherGUI.UI.AppFrame;
 import javax.swing.*;
 
 public class MyWeatherGUI

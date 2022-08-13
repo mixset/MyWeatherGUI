@@ -1,6 +1,6 @@
-package tests.Builder;
+package MyWeatherGUI.Builder;
 
-import main.Builder.RequestUrlBuilder;
+import MyWeatherGUI.Builder.RequestUrlBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

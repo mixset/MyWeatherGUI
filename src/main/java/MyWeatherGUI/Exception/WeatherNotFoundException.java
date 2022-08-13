@@ -1,4 +1,4 @@
-package main.Exception;
+package MyWeatherGUI.Exception;
 
 public class WeatherNotFoundException extends Throwable
 {

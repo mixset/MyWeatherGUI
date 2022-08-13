@@ -54,13 +54,13 @@ public class ActionPerformedListener implements ActionListener
                 cityLabel = new JLabel(
                         String.format(
                             Translation.CITY_FORMAT,
-                            weather.getLocation().getCity(),
-                            weather.getLocation().getLatency(),
-                            weather.getLocation().getLongitude()
+                            weather.location().city(),
+                            weather.location().latency(),
+                            weather.location().longitude()
                         )
                 );
-                temperatureLabel = new JLabel (String.format(Translation.TEMPERATURE_FORMAT, weather.getTemperature().getTemperature()));
-                windLabel = new JLabel (String.format(Translation.WIND_FORMAT, weather.getWind().getSpeed(), weather.getWind().getDirection()));
+                temperatureLabel = new JLabel (String.format(Translation.TEMPERATURE_FORMAT, weather.temperature().temperature()));
+                windLabel = new JLabel (String.format(Translation.WIND_FORMAT, weather.wind().speed(), weather.wind().direction()));
 
                 bottomPanel.add(cityLabel);
                 bottomPanel.add(temperatureLabel);

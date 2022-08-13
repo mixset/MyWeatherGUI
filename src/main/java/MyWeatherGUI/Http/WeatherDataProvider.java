@@ -38,7 +38,7 @@ public class WeatherDataProvider
 
     public Weather execute(Request request) throws IOException, InterruptedException, ParseException, URISyntaxException, WeatherNotFoundException
     {
-        URI url = requestUrlBuilder.build(request.getCity());
+        URI url = requestUrlBuilder.build(request.city());
 
         HttpRequest httpRequest = HttpRequest.newBuilder().GET().uri(url).build();
 

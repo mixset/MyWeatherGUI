@@ -1,22 +1,10 @@
 package MyWeatherGUI.DTO;
 
-public class Temperature
+public record Temperature(double temperature)
 {
-    private final double temperature;
-
-    public Temperature(double temperature)
-    {
-        this.temperature = temperature;
-    }
-
-    public double getTemperature()
-    {
-        return temperature;
-    }
 
     @Override
-    public String toString()
-    {
-        return String.format("Temperature is %s celsius degrees.", this.getTemperature());
+    public String toString() {
+        return String.format("Temperature is %s celsius degrees.", this.temperature());
     }
 }

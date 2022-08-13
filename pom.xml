@@ -10,6 +10,26 @@
     <artifactId>MyWeatherGUI</artifactId>
     <version>1.0</version>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>test.properties</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>

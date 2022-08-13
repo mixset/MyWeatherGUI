@@ -1,9 +1,9 @@
 package MyWeatherGUI.Builder;
 
-import MyWeatherGUI.Builder.RequestUrlBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -12,7 +12,7 @@ class RequestUrlBuilderTest
     private final RequestUrlBuilder requestUrlBuilder = new RequestUrlBuilder();
 
     @Test
-    public void queryWillContainCityInUrl() throws URISyntaxException
+    public void queryWillContainCityInUrl() throws URISyntaxException, IOException
     {
         String city = "Warsaw";
 
@@ -22,7 +22,7 @@ class RequestUrlBuilderTest
     }
 
     @Test
-    public void builderWillReturnURIObject() throws URISyntaxException
+    public void builderWillReturnURIObject() throws URISyntaxException, IOException
     {
         String city = "Warsaw";
 

@@ -21,6 +21,7 @@ public class ActionPerformedListener implements ActionListener
     private final JPanel bottomPanel;
     private final JFrame frame;
     private final JTextField cityTextField;
+    private final WeatherDataProvider weatherDataProvider = new WeatherDataProvider();
 
     public ActionPerformedListener(
         JLabel cityLabel,
@@ -44,12 +45,12 @@ public class ActionPerformedListener implements ActionListener
         String action = e.getActionCommand();
 
         if (action.equals(Translation.BUTTON_NAME)) {
-            WeatherDataProvider weatherDataProvider = new WeatherDataProvider();
-
             bottomPanel.removeAll();
 
             try {
-                Weather weather = weatherDataProvider.execute(new Request(cityTextField.getText().trim()));
+                String city = cityTextField.getText().trim();
+
+                Weather weather = weatherDataProvider.execute(new Request(city));
 
                 cityLabel = new JLabel(
                         String.format(

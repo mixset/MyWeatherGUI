@@ -10,9 +10,11 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Objects;
 
@@ -38,7 +40,7 @@ public class WeatherDataProvider
 
     public Weather execute(Request request) throws IOException, InterruptedException, ParseException, URISyntaxException, WeatherNotFoundException
     {
-        URI url = requestUrlBuilder.build(request.city());
+        URI url = requestUrlBuilder.build(encodeCityForUrl(request.city()));
 
         HttpRequest httpRequest = HttpRequest.newBuilder().GET().uri(url).build();
 
@@ -68,5 +70,10 @@ public class WeatherDataProvider
                 current.get("wind_dir").toString()
             )
         );
+    }
+
+    private String encodeCityForUrl(String city)
+    {
+        return URLEncoder.encode(city, StandardCharsets.UTF_8);
     }
 }

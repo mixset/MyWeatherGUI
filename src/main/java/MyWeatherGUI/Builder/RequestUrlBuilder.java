@@ -1,25 +1,28 @@
 package MyWeatherGUI.Builder;
 
-import MyWeatherGUI.Provider.ApplicationConfigProvider;
+import MyWeatherGUI.Provider.ApplicationConfigProviderInterface;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Properties;
 
 public class RequestUrlBuilder
 {
-    private final ApplicationConfigProvider applicationConfigProvider;
+    private final ApplicationConfigProviderInterface applicationConfigProvider;
 
-    public RequestUrlBuilder()
+    public RequestUrlBuilder(ApplicationConfigProviderInterface applicationConfigProvider)
     {
-        this.applicationConfigProvider = new ApplicationConfigProvider();
+        this.applicationConfigProvider = applicationConfigProvider;
     }
 
     public URI build(String city) throws URISyntaxException, IOException
     {
-        String domain = this.applicationConfigProvider.getConfig().getProperty("weatherapi.domain");
-        Integer version = Integer.valueOf(this.applicationConfigProvider.getConfig().getProperty("weatherapi.version"));
-        String apiKey = this.applicationConfigProvider.getConfig().getProperty("weatherapi.key");
+        Properties config = this.applicationConfigProvider.getConfig();
+
+        String domain = config.getProperty("weatherapi.domain");
+        Integer version = Integer.valueOf(config.getProperty("weatherapi.version"));
+        String apiKey = config.getProperty("weatherapi.key");
 
         String uri = domain + String.format("v%d", version) +
             "/current.json" +

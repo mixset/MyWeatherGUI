@@ -1,20 +1,20 @@
 package MyWeatherGUI.UI;
 
 import MyWeatherGUI.Config.FrameConfig;
-import MyWeatherGUI.UI.Listener.ActionPerformedListener;
+import MyWeatherGUI.UI.Listener.SearchCityActionPerformedListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AppFrame implements Runnable
 {
     JFrame frame;
     JPanel formPanel;
     JPanel bottomPanel;
-    JTextField city;
-    JLabel cityLabel;
-    JLabel temperatureLabel;
-    JLabel windLabel;
+    JTextField cityTextField;
 
     public void run()
     {
@@ -34,13 +34,29 @@ public class AppFrame implements Runnable
         bottomPanel.setBackground(new Color(245, 245, 245));
 
         JLabel formLabel = new JLabel(Translation.APP_HEADER);
-        city = new JTextField(15);
+        cityTextField = new JTextField(15);
 
         JButton button = new JButton(Translation.BUTTON_NAME);
-        button.addActionListener(new ActionPerformedListener(cityLabel, temperatureLabel, windLabel, bottomPanel, frame, city));
+
+        ActionListener actionListener = new SearchCityActionPerformedListener(
+            bottomPanel,
+            frame,
+            cityTextField
+        );
+
+        button.addActionListener(actionListener);
+
+        cityTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    button.doClick();
+                }
+            }
+        });
 
         formPanel.add(formLabel);
-        formPanel.add(city);
+        formPanel.add(cityTextField);
         formPanel.add(button);
 
         JLabel defaultLabel = new JLabel(Translation.DEFAULT_PANEL_MESSAGE);

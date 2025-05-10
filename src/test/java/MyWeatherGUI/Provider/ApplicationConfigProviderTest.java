@@ -13,18 +13,18 @@ class ApplicationConfigProviderTest
     @Test
     public void providerWillReturnPropertiesObject() throws IOException
     {
-        ApplicationConfigProvider applicationConfigProvider = new ApplicationConfigProvider("test.properties");
+        ApplicationConfigProvider applicationConfigProvider = new ApplicationConfigProvider();
 
         assertInstanceOf(Properties.class, applicationConfigProvider.getConfig());
     }
 
     @Test
-    public void providerWilLReturnValidDataFromFile() throws IOException
+    public void providerWillReturnValidDataFromFile() throws IOException
     {
-        ApplicationConfigProvider applicationConfigProvider = new ApplicationConfigProvider("test.properties");
+        ApplicationConfigProvider applicationConfigProvider = new ApplicationConfigProvider();
         Properties properties = applicationConfigProvider.getConfig();
 
-        assertEquals("http://api.example.com", properties.getProperty("weatherapi.domain"));
+        assertEquals("http://api.example.com/", properties.getProperty("weatherapi.domain"));
         assertEquals("1", properties.getProperty("weatherapi.version"));
         assertEquals("123456abcxed", properties.getProperty("weatherapi.key"));
     }

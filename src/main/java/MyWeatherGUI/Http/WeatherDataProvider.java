@@ -18,14 +18,14 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Objects;
 
-public class WeatherDataProvider
+public class WeatherDataProvider implements WeatherDataProviderInterface
 {
     private final HttpClient httpClient;
     private final RequestUrlBuilder requestUrlBuilder;
 
-    public WeatherDataProvider()
+    public WeatherDataProvider(RequestUrlBuilder requestUrlBuilder)
     {
-        this.requestUrlBuilder = new RequestUrlBuilder();
+        this.requestUrlBuilder = requestUrlBuilder;
         this.httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .connectTimeout(Duration.ofSeconds(10))
@@ -54,6 +54,7 @@ public class WeatherDataProvider
         JSONObject jsonObject = (JSONObject) parser.parse(response.body());
         JSONObject location = (JSONObject) jsonObject.get("location");
         JSONObject current = (JSONObject) jsonObject.get("current");
+        JSONObject condition = (JSONObject) current.get("condition");
 
         return new Weather(
             new Location(
@@ -68,6 +69,10 @@ public class WeatherDataProvider
             new Wind(
                 Double.parseDouble(current.get("wind_kph").toString()),
                 current.get("wind_dir").toString()
+            ),
+            new Condition(
+                condition.get("text").toString(),
+                condition.get("icon").toString()
             )
         );
     }

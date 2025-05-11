@@ -141,6 +141,8 @@ class WeatherDataProviderTest
 
     @Test
     public void executeWillParseComplexCityName() throws URISyntaxException, IOException, InterruptedException, WeatherNotFoundException, ParseException {
+
+        // Given
         HttpResponse<Object> response = new HttpResponse<>() {
             @Override
             public int statusCode() {
@@ -183,9 +185,11 @@ class WeatherDataProviderTest
             }
         };
 
+        // When
         Mockito.when(requestUrlBuilder.build("Palma+De+Mallorca")).thenReturn(new URI("http://example.com/some/url/Example"));
         Mockito.when(httpClient.send(Mockito.any(), Mockito.any())).thenReturn(response);
 
+        // Then
         Assertions.assertInstanceOf(
             Weather.class,
             weatherDataProvider.execute(new Request("Palma De Mallorca"))

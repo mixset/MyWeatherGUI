@@ -75,7 +75,7 @@ public class WeatherViewBuilder
             URL url = new URL("https:" + weather.condition().icon());
             icon = new ImageIcon(ImageIO.read(url));
         } catch (IOException e) {
-            URL imageUrl = getClass().getResource("/icon.png");
+            URL imageUrl = getClass().getResource("/weather-placeholder.png");
             if (imageUrl != null) {
                 icon = new ImageIcon(imageUrl);
             }
